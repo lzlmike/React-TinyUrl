@@ -4,6 +4,7 @@
 
 import React from 'react';
 import {LONG} from './FormContainer';
+import {FormGroup, InputGroup, FormControl, Button} from 'react-bootstrap'
 
 class Form extends React.Component {
 
@@ -47,17 +48,23 @@ class Form extends React.Component {
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
-                <label>
-                    {this.props.transFormType}:
-                    <input type="text" value={this.state.url} onChange={this.handleChange} />
-
-                </label>
-                <input type="submit" value="transform" />
-                <a href={this.state.receivedUrl}>{this.state.receivedUrl}</a>
+                <FormGroup>
+                    <InputGroup>
+                        <InputGroup.Addon>{this.props.transFormType}</InputGroup.Addon>
+                        <FormControl type="text" value={this.state.url} onChange={this.handleChange}/>
+                        <InputGroup.Button>
+                            <Button bsStyle="success" type="submit">transform</Button>
+                        </InputGroup.Button>
+                    </InputGroup>
+                </FormGroup>
+                <FormGroup>
+                    Result: <a href={this.state.receivedUrl}>{this.state.receivedUrl}</a>
+                    </FormGroup>
 
             </form>
         );
     }
+
 }
 
 export default Form;
