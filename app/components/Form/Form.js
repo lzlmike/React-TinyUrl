@@ -21,16 +21,18 @@ class Form extends React.Component {
     handleSubmit(event) {
         const type = this.props.transFormType;
         const url = this.state.url;
-        const api = 'http://localhost:3000/' + (type == LONG ? 'longToShort' : 'shortToLong');
+        const api = 'http://localhost:8080/' + (type == LONG ? 'longToShort' : 'shortToLong');
 
         console.log(type + ' ' + url + " " + api);
         fetch(api, {
             method: 'post',
             body: JSON.stringify(url)
         }).then(results => {
+            //console.log(results);
             return results.json();
         }).then(data => {
-            this.setState({receivedUrl: data.json()['url']});
+            //console.log(data['url']);
+            this.setState({receivedUrl: data['url']});
         }).catch((e) => {
             alert("error: " + e);
         });
