@@ -6,7 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack -p",
-    "start": "webpack -d --watch"
+    "start": "webpack -d --watch",
+    "getNginx": "brew install nginx",
+    "updateNginx": "npm run stopNginx && cp ./resources/nginx/nginx.conf /usr/local/etc/nginx/nginx.conf && npm run startNginx",
+    "startNginx": "sudo nginx",
+    "stopNginx": "sudo nginx -s stop"
   },
   "repository": {
     "type": "git",
